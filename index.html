@@ -5,121 +5,126 @@
   <title>FurtherTravel Email Signature Generator</title>
   <style>
     body { font-family: Roboto, Helvetica, Arial, sans-serif; padding:20px; background:#f9f9f9; }
-    input { padding:5px; margin:5px 0; width:300px; }
-    label { display:block; margin-top:10px; }
+    input { padding:8px; margin:5px 0; width:300px; }
+    label { display:block; margin-top:10px; font-weight:bold; }
     #signature-container { margin-top:20px; }
-    .copy-btn { margin-top:10px; padding:8px 12px; background:#f05d3e; color:white; border:none; cursor:pointer; }
+    .btn { margin-top:10px; padding:10px 15px; background:#f05d3e; color:white; border:none; cursor:pointer; }
   </style>
 </head>
 <body>
+
   <h2>FurtherTravel Signature Generator</h2>
 
-  <label for="name">Full Name:</label>
+  <label>Full Name:</label>
   <input type="text" id="name" placeholder="Full Name">
 
-  <label for="role">Job Title:</label>
-  <input type="text" id="role" placeholder="Your Position">
+  <label>Job Title:</label>
+  <input type="text" id="role" placeholder="Job Title">
 
-  <label for="email">Email Address:</label>
+  <label>Email Address:</label>
   <input type="text" id="email" placeholder="name@furthertravel.com">
 
-  <button class="copy-btn" onclick="generateSignature()">Generate Signature</button>
+  <br>
+  <button class="btn" onclick="generateSignature()">Generate Signature</button>
+  <button class="btn" onclick="copySignature()">Copy Signature</button>
 
   <div id="signature-container"></div>
 
   <script>
     function generateSignature() {
-      const name = document.getElementById('name').value || 'Samuel Thorley';
-      const role = document.getElementById('role').value || 'Brand Manager';
-      const email = document.getElementById('email').value || 'kate@furthertravel.com';
+      const name = document.getElementById('name').value || 'Your Name';
+      const role = document.getElementById('role').value || 'Your Role';
+      const email = document.getElementById('email').value || 'name@furthertravel.com';
 
       const signatureHTML = `
 <table cellpadding="0" cellspacing="0" width="100%" style="font-family:Roboto, Helvetica, Arial, sans-serif; max-width:600px; background-color:#FFFFFF;">
   <tbody>
-    <!-- Main signature row -->
     <tr>
       <td style="padding:2px;">
+        
+        <!-- Top row -->
         <table cellpadding="0" cellspacing="0" width="100%" style="border-collapse:collapse;">
-          <tbody>
-            <tr>
-              <!-- Left: Name & Role -->
-              <td valign="top" style="padding-right:20px; width:30%;">
-                <p style="margin:0; font-size:20px; line-height:20px; font-weight:bold; color:#212121;">
-                  Samuel Thorley
-                </p>
-                <p style="margin:2px 0 5px 0; font-size:14px; line-height:20px; font-weight:normal; color:#212121;">
-                  Brand Manager
-                </p>
-              </td>
+          <tr>
+            <td valign="top" style="padding-right:20px; width:30%;">
+              <p style="margin:0; font-size:20px; line-height:20px; font-weight:bold; color:#212121;">
+                ${name}
+              </p>
+              <p style="margin:2px 0 5px 0; font-size:14px; line-height:20px; color:#212121;">
+                ${role}
+              </p>
+            </td>
 
-              <!-- Right: Logo -->
-              <td valign="top" style="width:70%;" align="right">
-                <img src="https://3448448.fs1.hubspotusercontent-na1.net/hubfs/3448448/Signatures/Signature-Animation-Final.gif" width="250" alt="FurtherTravel Logo" style="display:block; border:0; outline:none; margin-right:6px;">
-              </td>
-            </tr>
-          </tbody>
+            <td valign="top" style="width:70%;" align="right">
+              <img src="https://3448448.fs1.hubspotusercontent-na1.net/hubfs/3448448/Signatures/Signature-Animation-Final.gif" width="250" style="display:block; border:0; outline:none;">
+            </td>
+          </tr>
         </table>
 
         <!-- Divider -->
         <table cellpadding="0" cellspacing="0" width="100%" style="margin:5px 0; border-collapse:collapse;">
           <tr>
-            <td style="border-top:2px solid #f05d3e; height:2px; font-size:0;">&nbsp;</td>
+            <td style="border-top:2px solid #f05d3e; height:2px;"></td>
           </tr>
         </table>
 
-        <!-- Two-column row: left = contacts, right = social -->
+        <!-- Bottom row -->
         <table cellpadding="0" cellspacing="0" width="100%" style="border-collapse:collapse;">
           <tr>
-            <!-- Left: Contact info stacked -->
+
+            <!-- Contact -->
             <td valign="top" style="width:60%; padding-right:20px;">
-              <p style="margin:5px 0; font-size:12px; color:#333333;">
-                <a href="mailto:kate@furthertravel.com" style="text-decoration:none; color:#333333;">
-                  <img src="https://3448448.fs1.hubspotusercontent-na1.net/hubfs/3448448/Signatures/icons8-email-48.png" width="16" alt="Email" style="display:inline; vertical-align:middle; margin-right:5px;"> kate@furthertravel.com
+              <p style="margin:5px 0; font-size:12px;">
+                <a href="mailto:${email}" style="text-decoration:none; color:#333333;">
+                  <img src="https://3448448.fs1.hubspotusercontent-na1.net/hubfs/3448448/Signatures/icons8-email-48.png" width="16" style="vertical-align:middle; margin-right:5px;"> ${email}
                 </a>
               </p>
-              <p style="margin:5px 0; font-size:12px; color:#333333;">
+
+              <p style="margin:5px 0; font-size:12px;">
                 <a href="https://furthertravel.com" style="text-decoration:none; color:#333333;">
-                  <img src="https://3448448.fs1.hubspotusercontent-na1.net/hubfs/3448448/Signatures/icons8-web-48.png" width="16" alt="Website" style="display:inline; vertical-align:middle; margin-right:5px;"> furthertravel.com
+                  <img src="https://3448448.fs1.hubspotusercontent-na1.net/hubfs/3448448/Signatures/icons8-web-48.png" width="16" style="vertical-align:middle; margin-right:5px;"> furthertravel.com
                 </a>
               </p>
-              <p style="margin:5px 0; font-size:12px; color:#333333;">
+
+              <p style="margin:5px 0; font-size:12px;">
                 <a href="tel:+441612223780" style="text-decoration:none; color:#333333;">
-                  <img src="https://3448448.fs1.hubspotusercontent-na1.net/hubfs/3448448/Signatures/icons8-call-48.png" width="16" alt="Call" style="display:inline; vertical-align:middle; margin-right:5px;"> 0161 222 3780
+                  <img src="https://3448448.fs1.hubspotusercontent-na1.net/hubfs/3448448/Signatures/icons8-call-48.png" width="16" style="vertical-align:middle; margin-right:5px;"> 0161 222 3780
                 </a>
               </p>
             </td>
 
-            <!-- Right: Social icons in a row -->
-            <td valign="top" style="width:9%;" align="center">
-              <table cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+            <!-- Social -->
+            <td valign="top" style="width:40%;" align="right">
+              <table cellpadding="0" cellspacing="0">
                 <tr>
                   <td style="padding:0 5px;">
-                    <a href="https://www.facebook.com/furthertravel/"><img src="https://3448448.fs1.hubspotusercontent-na1.net/hubfs/3448448/Signatures/icons8-facebook-50.png" width="16" alt="Facebook" style="display:block; border:0;"></a>
+                    <a href="https://www.facebook.com/furthertravel/"><img src="https://3448448.fs1.hubspotusercontent-na1.net/hubfs/3448448/Signatures/icons8-facebook-50.png" width="16"></a>
                   </td>
                   <td style="padding:0 5px;">
-                    <a href="https://www.instagram.com/furthertravel/"><img src="https://3448448.fs1.hubspotusercontent-na1.net/hubfs/3448448/Signatures/icons8-instagram-50.png" width="16" alt="Instagram" style="display:block; border:0;"></a>
+                    <a href="https://www.instagram.com/furthertravel/"><img src="https://3448448.fs1.hubspotusercontent-na1.net/hubfs/3448448/Signatures/icons8-instagram-50.png" width="16"></a>
                   </td>
                   <td style="padding:0 5px;">
-                    <a href="https://www.tiktok.com/@furthertravel"><img src="https://3448448.fs1.hubspotusercontent-na1.net/hubfs/3448448/Signatures/icons8-tiktok-50.png" width="16" alt="TikTok" style="display:block; border:0;"></a>
+                    <a href="https://www.tiktok.com/@furthertravel"><img src="https://3448448.fs1.hubspotusercontent-na1.net/hubfs/3448448/Signatures/icons8-tiktok-50.png" width="16"></a>
                   </td>
                   <td style="padding:0 5px;">
-                    <a href="https://www.youtube.com/@FurtherTravel"><img src="https://3448448.fs1.hubspotusercontent-na1.net/hubfs/3448448/Signatures/icons8-youtube-50.png" width="16" alt="YouTube" style="display:block; border:0;"></a>
+                    <a href="https://www.youtube.com/@FurtherTravel"><img src="https://3448448.fs1.hubspotusercontent-na1.net/hubfs/3448448/Signatures/icons8-youtube-50.png" width="16"></a>
                   </td>
-                  <td style="padding:0 5px;"</td>
-                    <a href="https://www.linkedin.com/company/furthertravel/posts/?feedView=all"><img src="https://3448448.fs1.hubspotusercontent-na1.net/hubfs/3448448/Signatures/icons8-linkedin-50.png" width="16" alt="LinkedIn" style="display:block; border:0;"></a>
+                  <td style="padding:0 5px;">
+                    <a href="https://www.linkedin.com/company/furthertravel/posts/?feedView=all"><img src="https://3448448.fs1.hubspotusercontent-na1.net/hubfs/3448448/Signatures/icons8-linkedin-50.png" width="16"></a>
                   </td>
                 </tr>
               </table>
             </td>
+
           </tr>
         </table>
 
-        <!-- Footer / legal -->
-        <p style="margin:15px 0 0 0; font-size:10px; color:#f05d3e; text-align:left; font-weight:bold;">
+        <!-- Footer -->
+        <p style="margin:15px 0 0 0; font-size:10px; color:#f05d3e; font-weight:bold;">
           Intrax | AuPairCare | Ayusa | AmeriCamp | FurtherTravel | Gap 360
         </p>
-        <p style="margin:5px 0 0 0; font-size:8px; color:#212121; line-height:12px; text-align:left;">
-          This e-mail, any attachments and the information contained therein ("this message") are confidential and intended solely for the use of the addressee(s). If you have received this message in error please send it back to the sender and delete it. Unauthorised publication, use, dissemination or disclosure of this message, either in whole or in part is strictly prohibited and will result in legal action taken by the directors of FurtherTravel Ltd.
+
+        <p style="margin:5px 0 0 0; font-size:8px; color:#212121; line-height:12px;">
+          This e-mail and any attachments are confidential. If received in error, please delete and notify the sender.
         </p>
 
       </td>
@@ -128,12 +133,19 @@
 </table>
       `;
 
-      const container = document.getElementById('signature-container');
-      container.innerHTML = signatureHTML;
+      document.getElementById('signature-container').innerHTML = signatureHTML;
+    }
 
-      // Scroll to signature
-      container.scrollIntoView({ behavior: "smooth" });
+    function copySignature() {
+      const container = document.getElementById('signature-container');
+      const range = document.createRange();
+      range.selectNode(container);
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(range);
+      document.execCommand('copy');
+      alert('Signature copied. Paste into Gmail signature settings.');
     }
   </script>
+
 </body>
 </html>
